@@ -1,6 +1,6 @@
-/* ==================== src/App.js ==================== */
+/* ==================== src/components/App.js ==================== */
 import React, { useContext, useState } from 'react';
-import { Container, Row, Col, Button, Image } from 'react-bootstrap';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 import Sidebar from './components/Sidebar';
 import Banner from './components/Banner';
 import InfoSection from './components/InfoSection';
@@ -10,17 +10,17 @@ import sections from './data/sections';
 import { TestContext } from './context/TestContext';
 
 export default function App() {
-  const { current, restart } = useContext(TestContext);
+  const { current, restart, progress } = useContext(TestContext);
   const [showLogs, setShowLogs] = useState(false);
 
   const sec = sections[current.section];
-  const logs = JSON.parse(localStorage.getItem('logs') || '[]').filter(entry => entry.msg.includes('Answer'));
+  const logs = JSON.parse(localStorage.getItem('logs') || '[]').filter(e => e.msg === 'Answer selected' || e.msg === 'Wrong answer');
 
   return (
     <>
       <div className="header">
-        <Image src="/logo.png" className="logo" />
-        <Prog />
+        <div className="logo-text">Saddle Creek</div>
+        <Prog progress={progress} />
       </div>
       <Container fluid style={{ padding: 0 }}>
         <Row>

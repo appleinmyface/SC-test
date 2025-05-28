@@ -3,9 +3,11 @@ const sections = [
   {
     key: 'welcome',
     title: 'Welcome',
-    intro: ['Welcome to Animal Noises!'],
-    lesson: ['Click Continue to begin.'],
-    quiz: []
+    intro: ['Welcome to Animal Noises!', 'In this tutorial you will learn how to navigate lessons and quizzes. Click Continue to proceed.'],
+    lesson: ['This is a simple tutorial to help you learn about animal noises. This is a Lesson section.'],
+    quiz: [
+        { q: 'This is what quiz questions will Look Like. Are you Ready To Begin?', options: ['Yes', 'No'], a: 'Yes' },
+    ]
   },
   {
     key: 'animals',
