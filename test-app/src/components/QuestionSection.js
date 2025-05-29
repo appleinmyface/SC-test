@@ -8,6 +8,7 @@ export default function QuestionSection({ quiz }) {
   const [answers, setAnswers] = useState({});
   const [wrongIdx, setWrongIdx] = useState(null);
   const [tip, setTip] = useState('');
+  const [showSuccess, setShowSuccess] = useState(false);
 
   const handleSelect = (i, val) => setAnswers(prev => ({ ...prev, [i]: val }));
 
@@ -19,6 +20,11 @@ export default function QuestionSection({ quiz }) {
         return;
       }
     }
+    setShowSuccess(true);
+  };
+
+  const handleContinue = () => {
+    setShowSuccess(false);
     nextStep();
   };
 
@@ -29,15 +35,30 @@ export default function QuestionSection({ quiz }) {
           <Form.Group key={i} className="mb-3">
             <Form.Label className={wrongIdx === i ? 'question-red' : ''}>{q.q}</Form.Label>
             {q.options.map(opt => (
-              <Form.Check key={opt} type="radio" name={`q${i}`} label={opt}
-                onChange={() => handleSelect(i, opt)} />
+              <Form.Check
+                key={opt}
+                type="radio"
+                name={`q${i}`}
+                label={opt}
+                onChange={() => handleSelect(i, opt)}
+              />
             ))}
             {wrongIdx === i && <Alert variant="danger" className="mt-2">Incorrect</Alert>}
           </Form.Group>
         ))}
       </Form>
       {tip && <Alert variant="warning">{tip}</Alert>}
-      <Button className="button-sc" onClick={handleSubmit}>Submit Answers</Button>
+      {!showSuccess ? (
+        <Button className="button-sc" onClick={handleSubmit}>Submit Answers</Button>
+      ) : (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <h1>✔</h1>
+            <p>All answers correct!</p>
+            <Button className="button-sc" onClick={handleContinue}>Continue</Button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

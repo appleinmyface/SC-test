@@ -3,17 +3,25 @@ const sections = [
   {
     key: 'welcome',
     title: 'Welcome',
-    intro: ['Welcome to Animal Noises!', 'In this tutorial you will learn how to navigate lessons and quizzes. Click Continue to proceed.'],
-    lesson: ['This is a simple tutorial to help you learn about animal noises. This is a Lesson section.'],
-    quiz: [
-        { q: 'This is what quiz questions will Look Like. Are you Ready To Begin?', options: ['Yes', 'No'], a: 'Yes' },
-    ]
+    intro: [
+      'Welcome to Animal Noises!',
+      'In this tutorial you will learn:',
+      '- How to navigate between Intro, Lesson, and Quiz.',
+      '- What to expect in each step.',
+      'Click Continue to start with the Animal Sounds lesson.'
+    ],
+    lesson: [],
+    quiz: []
   },
   {
     key: 'animals',
     title: 'Animal Sounds',
     intro: ['Intro to Animal Sounds: dogs, cats, cows.'],
-    lesson: ['Dogs bark with "woof", cats meow with "meow", cows moo with "moo".'],
+    lesson: [
+      'Dogs bark with "woof". They use different pitches to express emotion.',
+      'Cats meow with "meow". Kittens meow more, adults purr when content.',
+      'Cows moo with "moo". Farmers use cowbells to locate them.'
+    ],
     quiz: [
       { q: 'A dog goes?', options: ['woof', 'meow', 'moo'], a: 'woof' },
       { q: 'A cat goes?', options: ['moo', 'meow', 'woof'], a: 'meow' },
@@ -24,7 +32,11 @@ const sections = [
     key: 'farm',
     title: 'Farm Animals',
     intro: ['Intro to Farm Animals: chickens, horses, pigs.'],
-    lesson: ['Farm animals live on a farm: Chickens cluck, horses neigh, pigs oink.'],
+    lesson: [
+      'Chickens cluck with "cluck". They communicate danger and nesting.',
+      'Horses neigh with "neigh". They also snort when excited.',
+      'Pigs oink with "oink". They grunt when foraging.'
+    ],
     quiz: [
       { q: 'A chicken goes?', options: ['cluck', 'baa', 'neigh'], a: 'cluck' },
       { q: 'A horse goes?', options: ['moo', 'neigh', 'oink'], a: 'neigh' },
@@ -35,7 +47,11 @@ const sections = [
     key: 'wild',
     title: 'Wild Animals',
     intro: ['Intro to Wild Animals: lions, snakes, birds.'],
-    lesson: ['Wild animals roam free: Lions roar, snakes hiss, birds tweet.'],
+    lesson: [
+      'Lions roar with "roar". It can be heard 8km away.',
+      'Snakes hiss with "hiss". It is a warning signal.',
+      'Birds tweet with various calls for mating and territory.'
+    ],
     quiz: [
       { q: 'A lion goes?', options: ['roar', 'hiss', 'chirp'], a: 'roar' },
       { q: 'A snake goes?', options: ['slither', 'hiss', 'buzz'], a: 'hiss' },
