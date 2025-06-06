@@ -10,8 +10,21 @@ const sections = [
       '- What to expect in each step.',
       'Click Continue to start with the Animal Sounds lesson.'
     ],
-    lesson: [],
-    quiz: []
+    lesson: ['In the lessons section is where you will find all the information necessary to complete the quizzes.',
+            'Each lesson will cover different animal sounds and their meanings.',
+            'Pay attention to the details as they will help you answer the quiz questions.',
+            'You can always return to the lesson if you need a refresher.',
+            'Once you feel ready, proceed to the quiz section to test your knowledge.',
+            'Good luck!'
+    ],
+    quiz: ['Are you ready to test your knowledge? In the quiz section, you will find questions based on the lessons you just learned.',
+            'Each question will have multiple choice answers.',
+            'Select the answer you believe is correct and submit your response.',
+            'You will receive feedback on your answers after each quiz.',
+            'If you get stuck, feel free to revisit the lesson section for a refresher.',
+            'Once you complete all quizzes, you will receive a completion certificate.',
+            'ready to begin? Click Continue to start the first lesson.'
+    ]
   },
   {
     key: 'animals',
