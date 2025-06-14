@@ -6,7 +6,7 @@ export default function Sidebar() {
   const { current } = useContext(TestContext);
   return (
     <div className="sidebar">
-      <div className="sidebar-header">Animal Noises</div>
+      <div className="sidebar-header">BMS Training</div>
       <ul>
         {sections.map((sec, i) => (
           <li key={sec.key} className="section-item">
