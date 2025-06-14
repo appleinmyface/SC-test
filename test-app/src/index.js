@@ -6,8 +6,10 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter } from 'react-router-dom';
 import { TestProvider } from './context/TestContext';
+localStorage.removeItem('logs'); // or localStorage.clear();
 const container = document.getElementById('root');
 const root = createRoot(container);
+
 root.render(
   <React.StrictMode>
     <BrowserRouter>
@@ -17,3 +19,4 @@ root.render(
     </BrowserRouter>
   </React.StrictMode>
 );
+

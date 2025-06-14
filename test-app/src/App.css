@@ -1,64 +1,68 @@
 /* ==================== src/App.css ==================== */
 
-/* Brand Colors */
+/* Brand Variables */
 :root {
-  --sc-green: #007A33;         /* Primary brand green */
-  --sc-darkgreen: #005622;     /* Darker green for accents */
-  --sc-black: #1A1A1A;         /* Nearly black for text */
-  --sc-gray-dark: #4A4A4A;     /* Dark gray for secondary text */
-  --sc-gray-light: #F5F5F5;    /* Light gray background */
-  --sc-white: #FFFFFF;         /* Pure white */
-  --sc-border: #E0E0E0;        /* Light border */
+  --sc-green: #007A33;
+  --sc-darkgreen: #005622;
+  --sc-black: #1A1A1A;
+  --sc-gray-dark: #4A4A4A;
+  --sc-gray-light: #F5F5F5;
+  --sc-white: #FFFFFF;
+  --sc-border: #E0E0E0;
   --font-primary: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
 }
 
-/* Reset & base */
-body {
+/* ======= Base Reset ======= */
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
   background-color: var(--sc-gray-light);
   color: var(--sc-black);
   font-family: var(--font-primary);
-  font-weight: 400;
   font-size: 16px;
+  font-weight: 400;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Layout container */
+/* ======= Layout ======= */
 .app-container {
   display: flex;
-  height: 100vh; /* full viewport height */
+  height: 100vh;
   overflow: hidden;
+  gap: 5px;
 }
 
-/* Header */
 .header {
   display: flex;
   align-items: center;
   background-color: var(--sc-green);
+  color: var(--sc-white);
   padding: 1rem 2rem;
   border-bottom: 3px solid var(--sc-darkgreen);
-  color: var(--sc-white);
   font-weight: 700;
   font-size: 1.8rem;
   letter-spacing: 0.1em;
-  font-family: var(--font-primary);
   position: sticky;
   top: 0;
   z-index: 10;
-  user-select: none;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  user-select: none;
 }
 
 .logo-text {
-  font-weight: 900;
-  letter-spacing: 0.15em;
+  font-weight: 1000;
+  letter-spacing: 0.10em;
   color: var(--sc-white);
   user-select: none;
 }
 
-/* Progress container - next to logo */
+/* Progress Bar */
 .progress-container {
   flex-grow: 1;
   margin-left: 2rem;
@@ -67,7 +71,6 @@ body {
   min-width: 0;
 }
 
-/* Progress bar styling */
 .progress {
   width: 100%;
   height: 14px;
@@ -78,136 +81,120 @@ body {
   transition: background-color 0.3s ease;
 }
 
-/* Progress bar fill */
-.progress::-webkit-progress-value {
-  background-color: var(--sc-white);
-  border-radius: 12px;
-  transition: width 0.4s ease;
-}
-
+.progress::-webkit-progress-value,
 .progress::-moz-progress-bar {
   background-color: var(--sc-white);
   border-radius: 12px;
   transition: width 0.4s ease;
 }
 
-/* Sidebar */
+/* ======= Sidebar ======= */
 .sidebar {
-  width: 100%;            /* fixed width */
-  height: 100%;            /* full height of container */
+  width: 100%;
+  height: 100%;
   background-color: var(--sc-black);
   color: var(--sc-gray-light);
-  padding: 2rem 1.5rem;
+  padding: 1.1rem 1.25rem;
   overflow-y: auto;
-  border-right: 5px solid var(--sc-border);
   box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
   user-select: none;
-  box-sizing: border-box;  /* ensure padding doesn't break width */
 }
 
-
-/* Sidebar header */
 .sidebar-header {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 1000;
-  margin-bottom: 1.5rem;
+  text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--sc-white);
-  text-transform: uppercase;
-  font-family: var(--font-primary);
-  border-bottom: 1px solid var(--sc-border);
+  margin-bottom: 1.5rem;
   padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--sc-border);
 }
 
-/* Section title */
 .section-title {
-  color: var(--sc-gray-light);
+  font-size: 1.25rem;
   font-weight: 700;
-  font-size: 1.3rem;
+  color: var(--sc-gray-light);
   margin-bottom: 0.75rem;
   border-bottom: 1px solid var(--sc-border);
   padding-bottom: 0.25rem;
   user-select: none;
+  padding-top: 2rem;
 }
 
-/* Sidebar items */
 .child-item {
   margin-left: 1rem;
   padding: 0.4rem 0.75rem;
-  color: var(--sc-gray-light);
   font-size: 1rem;
+  color: var(--sc-gray-light);
   border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.25s ease, color 0.25s ease;
 }
 
-.child-item:hover {
-  background-color: var(--sc-green);
-  color: var(--sc-white);
-}
-
+.child-item:hover,
 .child-item.active {
   background-color: var(--sc-green);
   color: var(--sc-white);
   font-weight: 700;
+}
+
+.child-item.active {
   box-shadow: 0 0 6px var(--sc-green);
 }
 
-/* Main content */
+/* ======= Main Content ======= */
 .main-content {
   flex-grow: 1;
-  background-color: var(--sc-gray-light);
   padding: 3rem 4rem;
   overflow-y: auto;
+  margin-left: 2rem;
   border-radius: 0 0 0 12px;
   box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.05);
-  color: var(--sc-black);
-  font-family: var(--font-primary);
-  font-size: 1.1rem;
+  background: url('/public/images/SC_background.png');
+  background-size: contain;
+  font-size: 2rem;
   line-height: 1.6;
+  color: var(--sc-black);
 }
 
-/* Banner */
+/* ======= Banners and Cards ======= */
 .banner {
-  background-color: var(--sc-green);
+  background-color: var(--sc-darkgreen);
   color: var(--sc-white);
   padding: 1rem 2rem;
   font-size: 1.5rem;
   font-weight: 700;
-  margin-bottom: 2rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
+  margin-bottom: 2rem;
   box-shadow: 0 4px 10px rgba(0, 122, 51, 0.3);
 }
 
-/* Content boxes */
 .content-box {
-  background-color: #fff;
+  background-color: var(--sc-white);
   border: 1px solid var(--sc-border);
   border-radius: 12px;
-  padding: rem;
+  padding: 1rem;
   margin-bottom: 2rem;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07);
-  color: var(--sc-black);
   font-size: 1.1rem;
-  line-height: 1.5;
 }
 
-/* Buttons */
+/* ======= Buttons ======= */
 .button-sc {
   background-color: var(--sc-green);
   color: var(--sc-white);
   border: none;
   border-radius: 8px;
   padding: 14px 32px;
-  font-weight: 700;
   font-size: 1rem;
+  font-weight: 700;
   cursor: pointer;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  user-select: none;
-  letter-spacing: 0.05em;
   text-transform: uppercase;
+  letter-spacing: 0.05em;
   box-shadow: 0 6px 12px rgba(0, 122, 51, 0.35);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .button-sc:hover {
@@ -215,13 +202,7 @@ body {
   box-shadow: 0 8px 18px rgba(0, 86, 34, 0.5);
 }
 
-/* Question emphasis */
-.question-red {
-  color: var(--sc-green);
-  font-weight: 700;
-}
-
-/* Modal overlay */
+/* ======= Modal ======= */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -237,19 +218,17 @@ body {
   color: var(--sc-white);
 }
 
-/* Modal content */
 .modal-content {
   background-color: var(--sc-white);
+  color: var(--sc-black);
   padding: 3rem 4rem;
   border-radius: 14px;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
   max-width: 600px;
   text-align: center;
-  color: var(--sc-black);
-  font-family: var(--font-primary);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+  font-size: 2.5rem;
 }
 
-/* Modal heading */
 .modal-content h1 {
   font-size: 2.8rem;
   color: var(--sc-green);
@@ -258,16 +237,42 @@ body {
   letter-spacing: 0.1em;
 }
 
-/* Scrollable logs */
+/* ======= Utility ======= */
+.question-red {
+  color: var(--sc-green);
+  font-weight: 700;
+}
+
 .pre-logs {
   background-color: var(--sc-gray-light);
   border: 1px solid var(--sc-border);
+  border-radius: 8px;
   padding: 1rem;
   max-height: 320px;
   overflow-y: auto;
-  font-family: monospace, monospace;
+  font-family: monospace;
   font-size: 0.9rem;
   color: var(--sc-black);
-  border-radius: 8px;
   user-select: text;
 }
+.final-congrats {
+  font-size: 1.8rem;
+  padding: 3rem;
+  text-align: center;
+  color: var(--sc-darkgreen);
+}
+
+.final-congrats h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  font-weight: 900;
+}
+
+.congrats-img {
+  max-width: 100%;
+  height: auto;
+  margin-top: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 122, 51, 0.25);
+}
+
