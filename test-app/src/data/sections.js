@@ -20,6 +20,39 @@ const sections = [
     ]
   },
   {
+    key: 'video-intro',
+    title: 'Introduction Overview',
+    intro: [
+      'This section introduces key concepts covered in the training with a brief video overview.'
+    ],
+    lesson: [
+      { type: 'video', src: './video/BMSTrainingVideo.mp4', alt: 'Training Overview Video' },
+      'Watch the video to understand the overall process before diving into detailed sections.'
+    ],
+    quiz: [
+      {
+        q: 'What is the purpose of this training?',
+        options: [
+          'A) To learn how to use a smartphone',
+          'B) To understand warehouse operations and invoicing basics',
+          'C) To practice typing',
+          'D) To complete safety training'
+        ],
+        answer: 'B) To understand warehouse operations and invoicing basics',
+        hint: 'The video highlights the main goals of the training.'
+      },
+      {
+        q: 'Should you skip sections if you already know the material?',
+        options: [
+          'A) Yes',
+          'B) No'
+        ],
+        answer: 'B) No',
+        hint: 'Every section has unique material and questions.'
+      }
+    ]
+  },
+  {
     key: 'create-invoice',
     title: 'Section 1: Create an Invoice',
     intro: [
@@ -38,10 +71,33 @@ const sections = [
           'A) File > New > Invoice',
           'B) Billing > Create > Invoice',
           'C) Finance > New > Invoice',
-          'D) Operation > Invoice > Group Invoice - Batch'
+          'D) Operations > Invoice > Group Invoice - Batch'
         ],
-        answer: 'D) Operation > Invoice > Group Invoice - Batch',
-        hint: 'Refer to the path shown in the lesson as well as the image.'
+        answer: 'D) Operations > Invoice > Group Invoice - Batch',
+        hint: 'Refer to the path shown in the lesson and MenuPath.jpg image.'
+      },
+      // Additional questions
+      {
+        q: 'What is the main purpose of the Group Invoice Batch screen?',
+        options: [
+          'A) To delete invoices',
+          'B) To create invoices for multiple charges',
+          'C) To print reports',
+          'D) To update customer information'
+        ],
+        answer: 'B) To create invoices for multiple charges',
+        hint: 'It is used for efficient month-end billing.'
+      },
+      {
+        q: 'Which of the following is NOT a step in creating an invoice?',
+        options: [
+          'A) Setting filters',
+          'B) Selecting records',
+          'C) Sending emails',
+          'D) Generating invoices'
+        ],
+        answer: 'C) Sending emails',
+        hint: 'Focus on the steps described in the lesson.'
       }
     ]
   },
@@ -50,8 +106,8 @@ const sections = [
     title: 'Section 2: Service Date',
     intro: ['Learn how to set service date ranges for invoice filtering.'],
     lesson: [
-      '1. Set the Serv Date From',
-      '2. Set the Serv Date To — the date range belongs to the transactions dates that will be included in the invoice.',
+      '1. Set the Serv Date From.',
+      '2. Set the Serv Date To — these dates represent the transaction date range to be included in the invoice.',
       { type: 'image', src: '/images/HighLevelOverview.jpg', alt: 'High Level Overview' },
       '3. Press Query to pull the filtered records.'
     ],
@@ -68,15 +124,26 @@ const sections = [
         hint: 'Think about what dates actually determine which records are included in the invoice.'
       },
       {
-        q: 'What should you do after setting the service date range and before pulling records?',
+        q: 'Why is it important to set the correct service date range?',
         options: [
-          'A) Enter the business unit if required',
-          'B) Generate the invoice immediately',
-          'C) Skip to the next section',
-          'D) Close the application'
+          'A) To include only relevant transactions',
+          'B) To change invoice numbers',
+          'C) To update customer addresses',
+          'D) To print invoices'
         ],
-        answer: 'A) Enter the business unit if required',
-        hint: 'Make sure all necessary filters are set before querying.'
+        answer: 'A) To include only relevant transactions',
+        hint: 'The date range filters which records are included.'
+      },
+      {
+        q: 'What should you do after setting the service dates?',
+        options: [
+          'A) Press Query',
+          'B) Log out',
+          'C) Print the screen',
+          'D) Change the menu path'
+        ],
+        answer: 'A) Press Query',
+        hint: 'This action retrieves the filtered records.'
       }
     ]
   },
@@ -86,10 +153,10 @@ const sections = [
     intro: ['Pulling records is a key step in generating invoices.'],
     lesson: [
       { type: 'image', src: '/images/PullRecords.jpg', alt: 'Pull Records' },
-      '1. Enter Business unit (Mandatory)',
-      '2. Set Service Dates',
+      '1. Enter Business Unit (mandatory).',
+      '2. Set Service Dates.',
       '3. Press Query to retrieve results.',
-      'Review the record summary line to confirm the right data has been pulled.'
+      'Review the record summary line to confirm the correct data has been pulled.'
     ],
     quiz: [
       {
@@ -104,15 +171,26 @@ const sections = [
         hint: 'You won’t be able to pull any records without this key field.'
       },
       {
-        q: 'Once you retrieve the results, what should you do next?',
+        q: 'What should you review after pulling records?',
         options: [
-          'A) Immediately generate the invoice',
-          'B) Review the record summary line to confirm the right data has been pulled',
-          'C) Change the service dates and query again',
-          'D) Skip to the next section'
+          'A) The record summary line',
+          'B) The invoice comments',
+          'C) The menu path',
+          'D) The service date fields'
         ],
-        answer: 'B) Review the record summary line to confirm the right data has been pulled',
-        hint: 'It’s important to do what before proceeding to invoice generation.'
+        answer: 'A) The record summary line',
+        hint: 'This confirms the correct data has been pulled.'
+      },
+      {
+        q: 'What happens if you do not enter a business unit?',
+        options: [
+          'A) The system will pull all records',
+          'B) No records will be pulled',
+          'C) The system will crash',
+          'D) The invoice will be generated automatically'
+        ],
+        answer: 'B) No records will be pulled',
+        hint: 'Business unit is a required field.'
       }
     ]
   },
@@ -125,56 +203,268 @@ const sections = [
     ],
     lesson: [
       { type: 'image', src: '/images/AfterPullRecords.jpg', alt: 'After Pull Records' },
-      '5. Select the record line',
-      '6. Enter Invoice Comments (optional)',
+      '5. Select the record line.',
+      '6. Enter Invoice Comments (optional).',
       '7. Set the Trial Invoice Flag to “Yes” — best practice for review.',
       '8. Press Generate Invoice — this will generate an Invoice Generation Instance ID.',
       { type: 'image', src: '/images/InvoiceGeneration.jpg', alt: 'Invoice Generation' }
     ],
     quiz: [
       {
-        q: 'What is the recommended setting for the Trial Invoice Flag before generating an invoice?',
+        q: 'What is the purpose of setting the Trial Invoice Flag to "Yes"?',
         options: [
-          'A) No',
-          'B) Yes',
-          'C) Leave blank',
-          'D) Not applicable'
+          'A) To generate a final invoice',
+          'B) To review the invoice before finalization',
+          'C) To skip the invoice generation process',
+          'D) To automatically approve the invoice'
         ],
-        answer: 'B) Yes',
-        hint: 'Best practice is to review the invoice before finalizing.'
+        answer: 'B) To review the invoice before finalization',
+        hint: 'Think about the best practices for invoice review.'
       },
       {
-        q: 'What happens after you press Generate Invoice?',
+        q: 'What is generated after pressing "Generate Invoice"?',
         options: [
-          'A) The invoice is sent to the customer',
-          'B) An Invoice Generation Instance ID is created',
-          'C) The records are deleted',
-          'D) Nothing happens'
+          'A) A new customer record',
+          'B) An Invoice Generation Instance ID',
+          'C) A service date report',
+          'D) A business unit summary'
         ],
-        answer: 'B) An Invoice Generation Instance ID is created',
-        hint: 'Check the lesson steps for what is generated.'
+        answer: 'B) An Invoice Generation Instance ID',
+        hint: 'This ID is used to track the generated invoice.'
       },
       {
         q: 'Which step is optional in the invoice generation process?',
         options: [
-          'A) Select the record line',
-          'B) Enter Invoice Comments',
-          'C) Set the Trial Invoice Flag',
-          'D) Press Generate Invoice'
+          'A) Selecting the record line',
+          'B) Entering invoice comments',
+          'C) Setting the trial invoice flag',
+          'D) Pressing Generate Invoice'
         ],
-        answer: 'B) Enter Invoice Comments',
-        hint: 'You can skip this step if you have no comments.'
+        answer: 'B) Entering invoice comments',
+        hint: 'Comments are not required.'
+      }
+    ]
+  },
+  {
+    key: 'congrats',
+    title: 'Congratulations',
+    intro: ['You have completed all the main training sections.'],
+    labels: {
+      lesson: null,
+      quiz: null,
+    },
+  },
+  {
+    key: 'final-exam',
+    title: 'Final Exam',
+    intro: [
+      'You’ve reached the final section of the training.',
+      'This exam will review all the material covered. Take your time.'
+    ],
+    lesson: null,
+    quiz: [
+      {
+        q: 'What must be done before generating an invoice?',
+        options: [
+          'A) Enter comments only',
+          'B) Pull records and set the trial invoice flag',
+          'C) Skip to the end',
+          'D) Modify invoice number manually'
+        ],
+        answer: 'B) Pull records and set the trial invoice flag',
+        hint: 'Remember the recommended steps before pressing generate.'
+      },
+      {
+        q: 'What is the purpose of the Service Date From/To fields?',
+        options: [
+          'A) Invoice creation dates',
+          'B) Invoice approval range',
+          'C) Record filtering based on transaction dates',
+          'D) Due date filters'
+        ],
+        answer: 'C) Record filtering based on transaction dates',
+        hint: 'Used to filter transactions within a date range.'
+      },
+      // Additional final exam questions
+      {
+        q: 'Which field is mandatory when pulling records for an invoice?',
+        options: [
+          'A) Invoice comments',
+          'B) Business unit',
+          'C) Customer address',
+          'D) Service date'
+        ],
+        answer: 'B) Business unit',
+        hint: 'You cannot proceed without this field.'
+      },
+      {
+        q: 'What should you do after setting the service date range?',
+        options: [
+          'A) Press Query',
+          'B) Log out',
+          'C) Print the screen',
+          'D) Change the menu path'
+        ],
+        answer: 'A) Press Query',
+        hint: 'This retrieves the filtered records.'
+      },
+      {
+        q: 'What is the best practice before finalizing an invoice?',
+        options: [
+          'A) Set the trial invoice flag to "Yes"',
+          'B) Skip the trial invoice flag',
+          'C) Change the business unit',
+          'D) Ignore the record summary'
+        ],
+        answer: 'A) Set the trial invoice flag to "Yes"',
+        hint: 'This allows for review before finalization.'
+      },
+      {
+        q: 'What is generated when you press "Generate Invoice"?',
+        options: [
+          'A) A new customer record',
+          'B) An Invoice Generation Instance ID',
+          'C) A service date report',
+          'D) A business unit summary'
+        ],
+        answer: 'B) An Invoice Generation Instance ID',
+        hint: 'This ID is used to track the generated invoice.'
+      },
+      {
+        q: 'Which of the following is NOT a step in the invoice process?',
+        options: [
+          'A) Entering business unit',
+          'B) Setting service dates',
+          'C) Sending emails',
+          'D) Pressing Generate Invoice'
+        ],
+        answer: 'C) Sending emails',
+        hint: 'Focus on the steps described in the training.'
+      },
+      {
+        q: 'What should you review after pulling records?',
+        options: [
+          'A) The record summary line',
+          'B) The invoice comments',
+          'C) The menu path',
+          'D) The service date fields'
+        ],
+        answer: 'A) The record summary line',
+        hint: 'This confirms the correct data has been pulled.'
+      },
+      {
+        q: 'What happens if you do not enter a business unit?',
+        options: [
+          'A) The system will pull all records',
+          'B) No records will be pulled',
+          'C) The system will crash',
+          'D) The invoice will be generated automatically'
+        ],
+        answer: 'B) No records will be pulled',
+        hint: 'Business unit is a required field.'
+      },
+      {
+        q: 'Which step is optional in the invoice generation process?',
+        options: [
+          'A) Selecting the record line',
+          'B) Entering invoice comments',
+          'C) Setting the trial invoice flag',
+          'D) Pressing Generate Invoice'
+        ],
+        answer: 'B) Entering invoice comments',
+        hint: 'Comments are not required.'
+      },
+      {
+        q: 'Why is it important to set the correct service date range?',
+        options: [
+          'A) To include only relevant transactions',
+          'B) To change invoice numbers',
+          'C) To update customer addresses',
+          'D) To print invoices'
+        ],
+        answer: 'A) To include only relevant transactions',
+        hint: 'The date range filters which records are included.'
+      },
+      {
+        q: 'Should you skip sections if you already know the material?',
+        options: [
+          'A) Yes',
+          'B) No'
+        ],
+        answer: 'B) No',
+        hint: 'Every section has unique material and questions.'
+      },
+      {
+        q: 'What is the main purpose of the Group Invoice Batch screen?',
+        options: [
+          'A) To delete invoices',
+          'B) To create invoices for multiple charges',
+          'C) To print reports',
+          'D) To update customer information'
+        ],
+        answer: 'B) To create invoices for multiple charges',
+        hint: 'It is used for efficient month-end billing.'
+      },
+      {
+        q: 'Which of the following is NOT a step in creating an invoice?',
+        options: [
+          'A) Setting filters',
+          'B) Selecting records',
+          'C) Sending emails',
+          'D) Generating invoices'
+        ],
+        answer: 'C) Sending emails',
+        hint: 'Focus on the steps described in the lesson.'
+      },
+      {
+        q: 'What should you do after setting the service dates?',
+        options: [
+          'A) Press Query',
+          'B) Log out',
+          'C) Print the screen',
+          'D) Change the menu path'
+        ],
+        answer: 'A) Press Query',
+        hint: 'This action retrieves the filtered records.'
+      },
+      {
+        q: 'What is generated after pressing "Generate Invoice"?',
+        options: [
+          'A) A new customer record',
+          'B) An Invoice Generation Instance ID',
+          'C) A service date report',
+          'D) A business unit summary'
+        ],
+        answer: 'B) An Invoice Generation Instance ID',
+        hint: 'This ID is used to track the generated invoice.'
+      },
+      {
+        q: 'Which step is optional in the invoice generation process?',
+        options: [
+          'A) Selecting the record line',
+          'B) Entering invoice comments',
+          'C) Setting the trial invoice flag',
+          'D) Pressing Generate Invoice'
+        ],
+        answer: 'B) Entering invoice comments',
+        hint: 'Comments are not required.'
+      },
+      {
+        q: 'What is the purpose of setting the Trial Invoice Flag to "Yes"?',
+        options: [
+          'A) To generate a final invoice',
+          'B) To review the invoice before finalization',
+          'C) To skip the invoice generation process',
+          'D) To automatically approve the invoice'
+        ],
+        answer: 'B) To review the invoice before finalization',
+        hint: 'Think about the best practices for invoice review.'
       }
     ],
-    },
-{
-  key: 'congrats',
-  title: 'Congratulations!',
-  intro: ['🎉 You’ve finished the test. Well done!'],
-  lesson: [],
-  quiz: []
-}
-
+    
+    noRedo: true,
+    showScore: true
+  }
 ];
 
 export default sections;

@@ -1,25 +1,40 @@
+// src/components/InfoSection.js
 import React from 'react';
-import { Button } from 'react-bootstrap';
-import { TestContext } from '../context/TestContext';
 
 export default function InfoSection({ content }) {
-  const { nextStep } = React.useContext(TestContext);
-
   return (
     <div className="content">
-      {content.map((item, i) => {
+      {content.map((item, index) => {
         if (typeof item === 'string') {
-          return <p key={i}>{item}</p>;
+          return <p key={index}>{item}</p>;
         }
-        if (item && item.type === 'image') {
-          return <img key={i} src={item.src} alt={item.alt || 'image'} style={{ maxWidth: '100%' }} />;
+
+        if (item.type === 'image') {
+          return (
+            <img
+              key={index}
+              src={item.src}
+              alt={item.alt || 'Training Image'}
+              style={{ maxWidth: '100%', margin: '1rem 0' }}
+            />
+          );
         }
-        // fallback: don't render or you could log error or warning here
+
+        if (item.type === 'video') {
+          return (
+            <video
+              key={index}
+              controls
+              style={{ maxWidth: '100%', margin: '1rem 0', borderRadius: '10px' }}
+            >
+              <source src={item.src} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          );
+        }
+
         return null;
       })}
-      <Button className="button-sc mt-3" onClick={nextStep}>
-        Continue
-      </Button>
     </div>
   );
 }

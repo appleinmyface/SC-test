@@ -32,16 +32,19 @@ export const TestProvider = ({ children }) => {
     setProgress(Math.round((idx / totalSteps) * 100));
   }, [current]);
 
-  // ✅ Fix: define this function to handle going to the next section
   function goToNextSection() {
     const nextSection = current.section + 1;
 
     if (nextSection < sections.length) {
       setCurrent({ section: nextSection, step: 'intro' });
     } else {
-      // Optional: handle if you're at the last section
       console.log('End of sections reached');
-      // You can also set a special state or redirect here if needed
+    }
+  }
+
+  function goToSection(sectionIndex) {
+    if (sectionIndex >= 0 && sectionIndex < sections.length) {
+      setCurrent({ section: sectionIndex, step: 'intro' });
     }
   }
 
@@ -71,7 +74,7 @@ export const TestProvider = ({ children }) => {
     const sec = sections[current.section];
 
     if (current.step === 'quiz') {
-      if (sec.lesson.length > 0) {
+      if (sec.lesson && sec.lesson.length > 0) {
         setCurrent({ section: current.section, step: 'lesson' });
       } else {
         setCurrent({ section: current.section, step: 'intro' });
@@ -84,19 +87,35 @@ export const TestProvider = ({ children }) => {
       return;
     }
 
-    if (current.step === 'intro' && current.section > 0) {
+    if (current.step === 'intro') {
+      if (current.section === 0) return;
       const prevSec = sections[current.section - 1];
-      const hasQuiz = prevSec.quiz.length > 0;
-      const hasLesson = prevSec.lesson.length > 0;
-      const step = hasQuiz ? 'quiz' : hasLesson ? 'lesson' : 'intro';
-      setCurrent({ section: current.section - 1, step });
+      const hasQuiz = prevSec.quiz && prevSec.quiz.length > 0;
+      const hasLesson = prevSec.lesson && prevSec.lesson.length > 0;
+
+      if (hasQuiz) {
+        setCurrent({ section: current.section - 1, step: 'quiz' });
+      } else if (hasLesson) {
+        setCurrent({ section: current.section - 1, step: 'lesson' });
+      } else {
+        setCurrent({ section: current.section - 1, step: 'intro' });
+      }
     }
   };
 
   const restart = () => setCurrent({ section: 0, step: 'intro' });
 
   return (
-    <TestContext.Provider value={{ current, nextStep, prevStep, restart, progress }}>
+    <TestContext.Provider
+      value={{
+        current,
+        nextStep,
+        prevStep,
+        restart,
+        progress,
+        goToSection,
+      }}
+    >
       {children}
     </TestContext.Provider>
   );
